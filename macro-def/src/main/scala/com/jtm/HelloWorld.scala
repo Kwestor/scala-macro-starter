@@ -16,6 +16,7 @@ object HelloWorld {
 
   def helloParam_impl(c: Context)(param: c.Expr[Any]): c.Expr[Unit] = {
     import c.universe._
+    c.warning(param.tree.pos, "Test warning")
     reify { println(s"Hello ${param.splice}!") }
   }
 
